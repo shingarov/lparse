@@ -362,9 +362,9 @@ unsigned long HashSet::FindIndex(Instance *key, unsigned long mask)
   else
     table = items;
   
-  ind1 = hash((char *)key, arity*4, SEED_1) % mask;
+  ind1 = ::hash((char *)key, arity*4, SEED_1) % mask;
   if (table[ind1] && !equal_item(key, table[ind1], arity))
-    ind2 = (hash((char *)key, arity*4, SEED_2) % mask) + 1;
+    ind2 = (::hash((char *)key, arity*4, SEED_2) % mask) + 1;
   else
     return ind1;
 
